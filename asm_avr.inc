@@ -67,9 +67,9 @@ uECC_VLI_API void uECC_vli_set(uECC_word_t *dest, const uECC_word_t *src, wordco
         "1: \n\t"
         : "+x" (d), "+y" (src)
         : [num] "r" ((uint8_t)(num_words * 2))
-        : "r0",
+        : "r0"
     #if (uECC_MAX_WORDS != uECC_MIN_WORDS)
-          "r30", "r31", "cc"
+          ,"r30", "r31", "cc"
     #endif
     );
 }
@@ -875,6 +875,7 @@ uECC_VLI_API uECC_word_t uECC_vli_sub(uECC_word_t *result,
     uint8_t borrow = 0;
     uint8_t left_byte;
     uint8_t right_byte;
+    uint8_t i;
 
     __asm__ volatile (
         "clc \n\t"

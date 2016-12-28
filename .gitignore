@@ -12,3 +12,5 @@ __pycache__
 *.o
 *.so
 *.a
+*.elf
+*.hex
